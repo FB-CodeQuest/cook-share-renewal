@@ -1,0 +1,30 @@
+// Layout
+$max-width: 756px;
+
+// Color
+$primary: #ff9000;
+$secondary: #FFFCF5;
+$tertiary: #fff;
+$error: #FF2400;
+
+// Gray scale
+$gray-50: #f8f8f8;
+$gray-100: #dddddd;
+$gray-200: #D9D9D9;
+
+// text color
+$text-strong: #111111;
+$text-default: #333333;
+$text-sub: #777777;
+$text-secondary: #555555;
+$text-tertiary: #888888;
+$text-placeholder: #C8C8C8;
+$phone-placeholder: #E3E1DF;
+$text-sale: #D50426;
+
+// bg color
+$gray-bg: #eeeeee;
+$light-gray-bg: #f5f5f5;
+$label-bg: #EFEDE9;
+$input-bg: #F5F7FB;
+

@@ -1,0 +1,25 @@
+@import "reset";
+@import "variables";
+@import "common";
+
+html{
+  background-color: $primary;
+}
+
+body{
+  max-width: $max-width;
+  padding: 0 24px;
+  margin: 0 auto;
+  background-color: $white;
+  min-height: 100vh;
+  color: $text-default;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: $max-width;
+  min-height: 100vh;
+
+}
