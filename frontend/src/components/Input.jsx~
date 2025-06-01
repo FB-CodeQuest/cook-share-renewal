@@ -1,0 +1,7 @@
+const Input = (type, placeholder, value, onChange,label, className, error, required) => {
+    return (
+        <input type="text" />
+    )
+}
+
+export default Input

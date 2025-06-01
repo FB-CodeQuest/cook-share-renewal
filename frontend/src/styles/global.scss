@@ -1,0 +1,36 @@
+@import "reset";
+@import "variables";
+@import "common";
+
+@font-face {
+  font-family: 'GmarketSans';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+
+html{
+  background-color: $primary;
+}
+
+body{
+  max-width: $max-width;
+  padding: 0 24px;
+  margin: 0 auto;
+  background-color: $white;
+  min-height: 100vh;
+  font-family: $font-gmarket;
+  color: $text-default;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: $max-width;
+  min-height: 100vh;
+
+}
