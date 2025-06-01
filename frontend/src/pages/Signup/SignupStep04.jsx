@@ -14,7 +14,7 @@ const SignupStep04 = () => {
                 <p className={styles.signupStep__main__title}>반갑습니다!<br/>
                     비밀번호를 입력해주세요.</p>
                 <div
-                    className={styles.nicknameWrap}
+                    className={styles.inputWrap}
                 >
                     <Input
                         type={'password'}
