@@ -1,7 +1,23 @@
+@import "@/styles/variables";
 .inputWrapper{
   width: 100%;
   .input{
     width: inherit;
     border: none;
   }
+
+  .phone{
+    font-size: $font-size-xxxl;
+    font-weight: bold;
+    caret-color: $primary;
+
+    &:focus{
+      outline: none;
+    }
+
+    &::placeholder{
+      color: $phone-placeholder;
+    }
+  }
+
 }

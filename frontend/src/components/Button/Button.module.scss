@@ -18,3 +18,10 @@
         color: rgba($white, 0.5);
     }
 }
+
+.resend{
+    background-color: transparent;
+    text-decoration: underline;
+    font-size: $font-size-lg;
+    color: $primary;
+}

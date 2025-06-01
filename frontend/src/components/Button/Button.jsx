@@ -3,14 +3,16 @@ const Button = ({
     type='button',
     onClick,
     children,
-    disabled= false
+    disabled= false,
+    className = "",
+    variant=""
                 }) => {
     return (
         <button
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={styles.button}
+            className={`${styles.button} ${variant ? styles[variant] : ""} ${className}`}
         >
             {children}
         </button>

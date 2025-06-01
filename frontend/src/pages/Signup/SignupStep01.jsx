@@ -4,10 +4,11 @@ import {useState} from "react";
 import Button from "@/components/Button/Button.jsx";
 
 const SignupStep01 = () => {
+    const hasHeader = false;
     const [phone, setPhone] = useState('');
 
     return(
-        <div className={styles.signupStep}>
+        <div className={`${styles.signupStep} ${!hasHeader ? styles.noHeader : ""}`}>
             <div className={styles.signupStep__main}>
                 <p className={styles.signupStep__main__title}>전화번호를 입력해 주세요.</p>
                 <div className={styles.phoneInputWrap}>
@@ -21,7 +22,7 @@ const SignupStep01 = () => {
                         required
                         maxLength={11}
                         onChange={(e) => setPhone(e.target.value)}
-                        className={`${styles.input} ${styles.input__phone}`}
+                        variant="phone"
                     />
                 </div>
             </div>

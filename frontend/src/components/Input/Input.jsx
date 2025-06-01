@@ -1,5 +1,6 @@
 import styles from "./Input.module.scss";
-const Input = ({
+import {forwardRef} from "react";
+const Input = forwardRef(({
     type ,
     label,
     name,
@@ -8,12 +9,13 @@ const Input = ({
     maxLength,
     onChange,
     required = true,
-    className=''
-               }) => {
+    className='',
+    variant=""},ref) => {
     return (
         <div className={styles.inputWrapper}>
             <label className={"a11y-hidden"} htmlFor={name}>{label}</label>
             <input
+                ref={ref}
                 type={type}
                 name={name}
                 value={value}
@@ -21,10 +23,10 @@ const Input = ({
                 maxLength={maxLength}
                 onChange={onChange}
                 required={required}
-                className={`${styles.input} ${className}`}
+                className={`${styles.input} ${variant ? styles[variant] : ""} ${className}`}
             />
         </div>
     )
-}
+});
 
 export default Input
