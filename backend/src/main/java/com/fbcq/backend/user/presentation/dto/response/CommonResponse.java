@@ -6,10 +6,19 @@ public record CommonResponse<T>(
         T data
 ) {
     public static <T> CommonResponse<T> success(T data) {
-        return new CommonResponse<>(true, "OK", data);
+        return new CommonResponse<>(true, "요청 성공", data);
+    }
+
+    public static <T> CommonResponse<T> success(T data, String message) {
+        return new CommonResponse<>(true, message, data);
     }
 
     public static <T> CommonResponse<T> fail(String message) {
         return new CommonResponse<>(false, message, null);
     }
+
+    public static <T> CommonResponse<T> fail(String message, T data) {
+        return new CommonResponse<>(false, message, data);
+    }
 }
+

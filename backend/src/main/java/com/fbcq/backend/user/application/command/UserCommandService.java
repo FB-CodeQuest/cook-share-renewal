@@ -1,5 +1,7 @@
 package com.fbcq.backend.user.application.command;
 
+import com.fbcq.backend.global.exception.BusinessException;
+import com.fbcq.backend.global.exception.ErrorCode;
 import com.fbcq.backend.user.domain.model.User;
 import com.fbcq.backend.user.domain.repository.UserRepository;
 import com.fbcq.backend.user.domain.service.PasswordEncoder;
@@ -17,10 +19,13 @@ public class UserCommandService {
 
     @Transactional
     public void signUp(SignUpCommand command) {
-        userRepository.findByPhoneNumber(command.phoneNumber())
-                .ifPresent(user -> {
-                    throw new IllegalArgumentException("이미 등록된 전화번호입니다.");
-                });
+        if (userRepository.existsByNickname(command.nickname())) {
+            throw new BusinessException(ErrorCode.NICKNAME_DUPLICATED);
+        }
+
+        if (userRepository.findByPhoneNumber(command.phoneNumber()).isPresent()) {
+            throw new BusinessException(ErrorCode.PHONE_DUPLICATED);
+        }
 
         String encodedPw = passwordEncoder.encode(command.password());
         User user = User.builder()
