@@ -25,7 +25,7 @@ const SignupStep03 = () => {
                         onChange={(e) => setNickname(e.target.value)}
                         maxLength={12}
                         required
-                        variant="nickname"
+                        variant={'signupInput'}
                     />
 
                 </div>

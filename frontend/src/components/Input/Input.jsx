@@ -6,6 +6,7 @@ const Input = forwardRef(({
     name,
     value,
     placeholder,
+    minLength,
     maxLength,
     onChange,
     required = true,
@@ -20,6 +21,7 @@ const Input = forwardRef(({
                 name={name}
                 value={value}
                 placeholder={placeholder}
+                minLength={minLength}
                 maxLength={maxLength}
                 onChange={onChange}
                 required={required}
