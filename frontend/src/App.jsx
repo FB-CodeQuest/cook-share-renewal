@@ -1,9 +1,12 @@
 import './styles/global.scss';
+import Signup from "@/pages/Signup/Signup.jsx";
 function App() {
 
   return (
     <>
-      <h1>App</h1>
+        <main>
+            <Signup />
+        </main>
     </>
   )
 }

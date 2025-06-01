@@ -1,0 +1,8 @@
+import SignupStep01 from "@/pages/Signup/SignupStep01.jsx";
+
+const Signup = () => {
+    return(
+        <SignupStep01 />
+    )
+}
+export default Signup;

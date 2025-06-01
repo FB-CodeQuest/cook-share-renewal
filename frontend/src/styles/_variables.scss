@@ -2,11 +2,24 @@
 $max-width: 756px;
 
 // Color
-$primary: #ff9000;
+$primary: #FF7A00;
 $secondary: #FFFCF5;
 $tertiary: #554332;
 $white: #fff;
 $error: #FF2400;
+
+// Font
+$font-gmarket : 'GmarketSans';
+$font-pretendard : 'Pretendard';
+
+// Font Sizes
+$font-size-xs: 0.75rem;   // 12px
+$font-size-sm: 0.875rem;  // 14px
+$font-size-base: 1rem;    // 16px
+$font-size-md: 1.125rem;  // 18px
+$font-size-lg: 1.25rem;   // 20px
+$font-size-xl: 1.5rem;    // 24px
+$font-size-xxl: 2rem;     //32px
 
 // Gray scale
 $gray-50: #f8f8f8;

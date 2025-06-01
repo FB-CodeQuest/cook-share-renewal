@@ -1,0 +1,30 @@
+import styles from "./Input.module.scss";
+const Input = ({
+    type ,
+    label,
+    name,
+    value,
+    placeholder,
+    maxLength,
+    onChange,
+    required = true,
+    className=''
+               }) => {
+    return (
+        <div className={styles.inputWrapper}>
+            <label className={"a11y-hidden"} htmlFor={name}>{label}</label>
+            <input
+                type={type}
+                name={name}
+                value={value}
+                placeholder={placeholder}
+                maxLength={maxLength}
+                onChange={onChange}
+                required={required}
+                className={`${styles.input} ${className}`}
+            />
+        </div>
+    )
+}
+
+export default Input
