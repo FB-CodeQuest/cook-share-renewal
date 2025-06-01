@@ -20,4 +20,19 @@
     }
   }
 
+  .nickname{
+    text-align: center;
+    font-size: $font-size-xxxl;
+    font-weight: bold;
+    caret-color: transparent;
+
+    &:focus{
+      outline: none;
+    }
+
+    &::placeholder{
+      color: $phone-placeholder;
+    }
+  }
+
 }

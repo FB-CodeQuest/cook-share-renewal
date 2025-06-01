@@ -70,7 +70,12 @@
       }
     }
     .btnWrap{
+      width: 100%;
       padding-top: 30px;
+
+      &.stepBtn{
+        padding-top: 50px;
+      }
     }
   }
 
