@@ -4,12 +4,12 @@ import Input from "@/components/Input/Input.jsx";
 import Button from "@/components/Button/Button.jsx";
 import {useState} from "react";
 
-const SignupStep04 = () => {
+const SignupStep04 = ({goNext,goPrev}) => {
     const hasHeader = true;
     const [password, setPassword] = useState('');
     return (
         <div className={`${styles.signupStep} ${!hasHeader ? styles.noHeader : ""}`}>
-            {hasHeader && <SignupHeader/>}
+            {hasHeader && <SignupHeader onBack={goPrev}/>}
             <div className={styles.signupStep__main}>
                 <p className={styles.signupStep__main__title}>반갑습니다!<br/>
                     비밀번호를 입력해주세요.</p>
@@ -34,6 +34,7 @@ const SignupStep04 = () => {
                     <Button
                         type={"submit"}
                         disabled={password.length < 8}
+                        onClick={goNext}
                     >
                         계속하기
                     </Button>

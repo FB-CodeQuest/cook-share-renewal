@@ -1,10 +1,10 @@
 import styles from "@/pages/Signup/Signup.module.scss";
 import SignupHeader from "@/components/Header/SignupHeader.jsx";
 import Input from "@/components/Input/Input.jsx";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Button from "@/components/Button/Button.jsx";
 
-const SignupStep02 = () => {
+const SignupStep02 = ({goNext,goPrev}) => {
     const hasHeader = true;
     const [code, setCode] = useState('');
     const inputRef = useRef(null);
@@ -12,9 +12,15 @@ const SignupStep02 = () => {
         const value = e.target.value.replace(/\D/g, "").slice(0, 6);
         setCode(value);
     };
+
+    useEffect(() => {
+        if(code.length === 6){
+            goNext();
+        }
+    }, [code, goNext]);
     return(
         <div className={`${styles.signupStep} ${!hasHeader ? styles.noHeader : ""}`}>
-            {hasHeader && <SignupHeader/>}
+            {hasHeader && <SignupHeader onBack={goPrev}/>}
             <div className={styles.signupStep__main}>
                 <p className={styles.signupStep__main__title}>문자로 받은<br/>
                     인증번호를 입력해주세요.</p>

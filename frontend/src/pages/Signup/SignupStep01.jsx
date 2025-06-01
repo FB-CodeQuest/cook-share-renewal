@@ -3,7 +3,7 @@ import Input from "@/components/Input/Input.jsx";
 import {useState} from "react";
 import Button from "@/components/Button/Button.jsx";
 
-const SignupStep01 = () => {
+const SignupStep01 = ({ goNext }) => {
     const hasHeader = false;
     const [phone, setPhone] = useState('');
 
@@ -34,7 +34,7 @@ const SignupStep01 = () => {
                 <div className={styles.signupStep__buttonWrap}>
                     <Button
                         type="submit"
-                        onClick={() => console.log('눌렀음')}
+                        onClick={goNext}
                         disabled={!phone}
                     >
                         인증번호 받기

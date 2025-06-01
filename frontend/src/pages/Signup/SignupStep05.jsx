@@ -4,13 +4,13 @@ import SignupHeader from "@/components/Header/SignupHeader.jsx";
 import Input from "@/components/Input/Input.jsx";
 import Button from "@/components/Button/Button.jsx";
 
-const SignupStep05 = () => {
+const SignupStep05 = ({goNext,goPrev}) => {
     const hasHeader = true;
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
     return (
         <div className={`${styles.signupStep} ${!hasHeader ? styles.noHeader : ""}`}>
-            {hasHeader && <SignupHeader/>}
+            {hasHeader && <SignupHeader onBack={goPrev}/>}
             <div className={styles.signupStep__main}>
                 <p className={styles.signupStep__main__title}>반갑습니다!<br/>
                     비밀번호를 입력해주세요.</p>
