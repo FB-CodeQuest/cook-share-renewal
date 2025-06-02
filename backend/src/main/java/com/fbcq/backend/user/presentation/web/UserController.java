@@ -5,7 +5,7 @@ import com.fbcq.backend.user.application.command.SignUpCommand;
 import com.fbcq.backend.user.application.command.UserCommandService;
 import com.fbcq.backend.user.presentation.dto.request.LoginRequest;
 import com.fbcq.backend.user.presentation.dto.request.SignUpRequest;
-import com.fbcq.backend.user.presentation.dto.response.CommonResponse;
+import com.fbcq.backend.global.dto.response.CommonResponse;
 import com.fbcq.backend.user.presentation.dto.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
