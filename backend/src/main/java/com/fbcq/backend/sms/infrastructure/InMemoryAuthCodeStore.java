@@ -4,6 +4,7 @@ import com.fbcq.backend.sms.domain.AuthCodeStore;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
@@ -16,10 +17,12 @@ public class InMemoryAuthCodeStore implements AuthCodeStore {
     }
 
     @Override
-    public String get(String phone) {
+    public Optional<String> get(String phone) {
         TimedCode timed = store.get(phone);
-        if (timed == null || timed.expired()) return null;
-        return timed.code();
+        if (timed == null || timed.expired()) {
+            return Optional.empty();  // ✅ null 반환 금지
+        }
+        return Optional.of(timed.code());
     }
 
     @Override

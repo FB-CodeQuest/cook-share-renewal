@@ -14,13 +14,13 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class TwilioSmsClient implements SmsClient {
 
-    @Value("${TWILIO_ACCOUNT_SID}")
+    @Value("${twilio.account-sid}")
     private String accountSid;
 
-    @Value("${TWILIO_AUTH_TOKEN}")
+    @Value("${twilio.auth-token}")
     private String authToken;
 
-    @Value("${TWILIO_SENDER_PHONE}")
+    @Value("${twilio.sender-phone}")
     private String senderPhone;
 
     @PostConstruct
@@ -30,8 +30,14 @@ public class TwilioSmsClient implements SmsClient {
 
     @Override
     public void send(SmsMessage message) {
+        String to = PhoneNumberUtil.toE164Format(message.to());
+
+        if (to.equals(senderPhone)) {
+            throw new IllegalArgumentException("수신 번호와 발신 번호가 동일할 수 없습니다.");
+        }
+
         Message.creator(
-                new PhoneNumber(message.to()),
+                new PhoneNumber(to),
                 new PhoneNumber(senderPhone),
                 message.content()
         ).create();

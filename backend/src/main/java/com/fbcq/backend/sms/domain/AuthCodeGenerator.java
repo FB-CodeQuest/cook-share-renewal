@@ -1,7 +1,10 @@
 package com.fbcq.backend.sms.domain;
 
+import org.springframework.stereotype.Component;
+
 import java.security.SecureRandom;
 
+@Component
 public class AuthCodeGenerator {
     private static final SecureRandom random = new SecureRandom();
     private static final int CODE_LENGTH = 6;
