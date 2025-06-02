@@ -1,5 +1,6 @@
 package com.fbcq.backend.sms.application;
 
+import com.fbcq.backend.global.exception.InvalidAuthCodeException;
 import com.fbcq.backend.sms.domain.AuthCodeStore;
 import lombok.RequiredArgsConstructor;
 

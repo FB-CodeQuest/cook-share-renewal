@@ -6,7 +6,8 @@ public enum ErrorCode {
     NICKNAME_DUPLICATED("D001", HttpStatus.BAD_REQUEST, "이미 등록된 닉네임입니다."),
     PHONE_DUPLICATED("D002", HttpStatus.BAD_REQUEST, "이미 등록된 번호입니다."),
     USER_NOT_FOUND("N001", HttpStatus.NOT_FOUND, "사용자를 찾을 수 없습니다."),
-    INVALID_PASSWORD("A001", HttpStatus.UNAUTHORIZED, "비밀번호가 일치하지 않습니다.");
+    INVALID_PASSWORD("A001", HttpStatus.UNAUTHORIZED, "비밀번호가 일치하지 않습니다."),
+    INVALID_AUTH_CODE("A002", HttpStatus.UNAUTHORIZED, "인증번호가 일치하지 않습니다."); // ✅ 추가
 
     private final String code;
     private final HttpStatus status;

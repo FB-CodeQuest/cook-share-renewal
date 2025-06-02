@@ -2,6 +2,7 @@ package com.fbcq.backend.sms.application;
 
 // SmsSendService.java
 
+import com.fbcq.backend.sms.domain.AuthCodeGenerator;
 import com.fbcq.backend.sms.domain.AuthCodeStore;
 import com.fbcq.backend.sms.domain.SmsMessage;
 import lombok.RequiredArgsConstructor;

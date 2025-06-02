@@ -2,6 +2,9 @@ package com.fbcq.backend.sms.infrastructure;
 
 import com.fbcq.backend.sms.application.SmsClient;
 import com.fbcq.backend.sms.domain.SmsMessage;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import com.twilio.Twilio;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
