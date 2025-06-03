@@ -59,7 +59,7 @@ const SignupStep03 = ({goNext,goPrev}) => {
                         value={nickname}
                         onChange={(e) => {
                             setNickname(e.target.value);
-                            setError('');
+                            // setError('');
                         }}
                         maxLength={12}
                         required
