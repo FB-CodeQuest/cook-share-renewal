@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4d017b5-9bf7-45c7-a011-87a71ed1ffc1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/userApi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/lib/axiosInstance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/fbcq/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/fbcq/backend/BackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/backend.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/userApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/userApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Button/Button.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Button/Button.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Signup/Signup.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup/Signup.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Signup/SignupStep03.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup/SignupStep03.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Signup/SignupStep01.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup/SignupStep01.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +167,7 @@
       <workItem from="1748869295788" duration="742000" />
       <workItem from="1748870100355" duration="323000" />
       <workItem from="1748870449627" duration="250000" />
-      <workItem from="1748870762287" duration="15474000" />
+      <workItem from="1748870762287" duration="23017000" />
     </task>
     <servers />
   </component>

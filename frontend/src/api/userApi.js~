@@ -7,7 +7,7 @@ export const checkNickname = async (nickname) => {
 };
 
 export const checkPhoneNumber = async (phoneNumber) => {
-    return axiosInstance.get("/api/users/check-phone",{
+    return axiosInstance.get("/api/users/check-phone-number",{
         params: { phoneNumber },
     });
 };

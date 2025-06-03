@@ -68,10 +68,7 @@ const SignupStep01 = ({ goNext }) => {
                     {phone &&
                         <Button
                             type="button"
-                            onClick={() => {
-                                setPhone('')
-                                setError('');
-                            }}
+                            onClick={() => setPhone('')}
                             variant="icon"
                             aria-label="전화번호 입력값 지우기"
                         >
