@@ -7,6 +7,7 @@ import {useState} from "react";
 
 const Signup = () => {
     const [step, setStep] = useState(1);
+    const [phoneNumber, setPhoneNumber] = useState('');
 
     const goNext = () => setStep((prev) => prev + 1)
     const goPrev = () => setStep((prev) => prev - 1)
@@ -16,8 +17,8 @@ const Signup = () => {
 
     return(
         <>
-            {step === 1 && <SignupStep01 {...stepProps}/>}
-            {step === 2 && <SignupStep02 {...stepProps}/>}
+            {step === 1 && <SignupStep01 {...stepProps} setPhoneNumber={setPhoneNumber}/>}
+            {step === 2 && <SignupStep02 {...stepProps} phoneNumber={phoneNumber}/>}
             {step === 3 && <SignupStep03 {...stepProps}/>}
             {step === 4 && <SignupStep04 {...stepProps}/>}
             {step === 5 && <SignupStep05 {...stepProps}/>}

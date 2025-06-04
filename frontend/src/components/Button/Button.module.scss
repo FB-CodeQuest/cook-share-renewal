@@ -24,6 +24,10 @@
     text-decoration: underline;
     font-size: $font-size-lg;
     color: $primary;
+
+    &:disabled{
+        color: rgba($primary, 0.5);
+    }
 }
 
 .icon{

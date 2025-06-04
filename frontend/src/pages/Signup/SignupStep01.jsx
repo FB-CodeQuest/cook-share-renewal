@@ -5,8 +5,9 @@ import Button from "@/components/Button/Button.jsx";
 import {checkPhoneNumber} from "@/api/userApi.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
+import {smsSend} from "@/api/smsApi.js";
 
-const SignupStep01 = ({ goNext }) => {
+const SignupStep01 = ({ goNext, setPhoneNumber }) => {
     const hasHeader = false;
     const [phone, setPhone] = useState('');
     const [isChecking, setIsChecking] = useState(false);
@@ -23,13 +24,23 @@ const SignupStep01 = ({ goNext }) => {
 
         try{
             setIsChecking(true);
-            const res = await checkPhoneNumber(phone);
 
-            if(res.data.success){
-                goNext();
-            }else{
-                setError(res.data.message);
+            // 중복확인
+            const checkRes = await checkPhoneNumber(phone);
+            if(!checkRes.data.success){
+                setError(checkRes.data.message);
+                return;
             }
+
+            // 인증번호 전송
+            const smsRes = await smsSend(phone);
+            if(!smsRes.data.success){
+                setError(smsRes.data.message);
+                return;
+            }
+
+            setPhoneNumber(phone);
+            goNext();
 
         }catch(e){
             const msg = e.response?.data?.message || "서버 오류가 발생했습니다.";

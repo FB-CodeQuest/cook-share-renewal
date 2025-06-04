@@ -41,6 +41,7 @@ const SignupStep02 = ({goNext,goPrev, phoneNumber}) => {
         const countDown = setInterval(() => {
             setTimer((prev) => {
                 if(prev <= 1){
+                    clearInterval(countDown);
                     setReSend(true);
                     return 0;
                 }

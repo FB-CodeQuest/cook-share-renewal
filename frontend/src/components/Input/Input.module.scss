@@ -2,7 +2,7 @@
 .inputWrapper{
   width: 100%;
   .input{
-    width: inherit;
+    width: 100%;
     border: none;
   }
 
@@ -18,6 +18,10 @@
     &::placeholder{
       color: $phone-placeholder;
     }
+  }
+
+  .authCode{
+    width: initial;
   }
 
   .signupInput{
