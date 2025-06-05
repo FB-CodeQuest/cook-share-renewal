@@ -51,7 +51,6 @@ const SignupStep02 = ({goNext,goPrev, phoneNumber}) => {
         return () => clearInterval(countDown);
     },[reSend]);
 
-
     useEffect(() => {
         if(code.length !== 6) return;
         const verifyCode = async () => {
