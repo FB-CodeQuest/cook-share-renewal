@@ -16,7 +16,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Integer userId;
 
     private String nickname;
 
@@ -27,13 +27,6 @@ public class User {
     private String address;
 
     private String shortAddress;
-
-    private String refreshToken;
-
-    // 예: DDD 관점에서 행위 메서드 포함 가능
-    public void updateRefreshToken(String newToken) {
-        this.refreshToken = newToken;
-    }
 
     public boolean isPasswordMatch(String password, PasswordEncoder passwordEncoder) {
         return passwordEncoder.matches(password, this.password);

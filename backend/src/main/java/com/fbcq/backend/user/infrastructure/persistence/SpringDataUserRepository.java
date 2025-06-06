@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface SpringDataUserRepository extends JpaRepository<User, Long> {
+public interface SpringDataUserRepository extends JpaRepository<User, Integer> {
     Optional<User> findByPhoneNumber(String phoneNumber);
     boolean existsByNickname(String nickname);
 }
