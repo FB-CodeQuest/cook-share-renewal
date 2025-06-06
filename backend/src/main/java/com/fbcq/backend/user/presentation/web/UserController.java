@@ -1,12 +1,9 @@
 package com.fbcq.backend.user.presentation.web;
 
-import com.fbcq.backend.user.application.command.LoginCommand;
 import com.fbcq.backend.user.application.command.SignUpCommand;
 import com.fbcq.backend.user.application.command.UserCommandService;
-import com.fbcq.backend.user.presentation.dto.request.LoginRequest;
 import com.fbcq.backend.user.presentation.dto.request.SignUpRequest;
 import com.fbcq.backend.global.dto.response.CommonResponse;
-import com.fbcq.backend.user.presentation.dto.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -47,23 +44,6 @@ public class UserController {
                 req.nickname(), req.phoneNumber(), req.password(), req.address(), req.shortAddress()
         ));
         return ResponseEntity.ok(CommonResponse.success(null));
-    }
-
-    @Operation(
-            summary = "로그인",
-            responses = {
-                    @ApiResponse(responseCode = "200", description = "로그인 성공",
-                            content = @Content(schema = @Schema(implementation = CommonResponse.class))),
-                    @ApiResponse(responseCode = "400", description = "존재하지 않는 전화번호",
-                            content = @Content(schema = @Schema(implementation = CommonResponse.class))),
-                    @ApiResponse(responseCode = "401", description = "인증 실패",
-                            content = @Content(schema = @Schema(implementation = CommonResponse.class)))
-            }
-    )
-    @PostMapping("/login")
-    public ResponseEntity<CommonResponse<UserResponse>> login(@Valid @RequestBody LoginRequest req) {
-        var res = userCommandService.login(new LoginCommand(req.phoneNumber(), req.password()));
-        return ResponseEntity.ok(CommonResponse.success(res));
     }
 
     @Operation(

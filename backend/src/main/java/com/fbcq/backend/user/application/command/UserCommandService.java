@@ -5,7 +5,6 @@ import com.fbcq.backend.global.exception.ErrorCode;
 import com.fbcq.backend.user.domain.model.User;
 import com.fbcq.backend.user.domain.repository.UserRepository;
 import com.fbcq.backend.user.domain.service.PasswordEncoder;
-import com.fbcq.backend.user.presentation.dto.response.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,15 +39,15 @@ public class UserCommandService {
     }
 
     @Transactional(readOnly = true)
-    public UserResponse login(LoginCommand command) {
-        User user = userRepository.findByPhoneNumber(command.phoneNumber())
+    public User authenticate(String phoneNumber, String rawPassword) {
+        User user = userRepository.findByPhoneNumber(phoneNumber)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 전화번호입니다."));
 
-        if (!user.isPasswordMatch(command.password(), passwordEncoder)) {
+        if (!user.isPasswordMatch(rawPassword, passwordEncoder)) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
-        return new UserResponse(user.getUserId(), user.getNickname());
+        return user;
     }
 
     @Transactional(readOnly = true)

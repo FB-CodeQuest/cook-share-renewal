@@ -1,4 +1,4 @@
-package com.fbcq.backend.user.presentation.dto.request;
+package com.fbcq.backend.auth.presentation.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

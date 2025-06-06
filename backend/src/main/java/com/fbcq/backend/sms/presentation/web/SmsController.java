@@ -35,7 +35,9 @@ public class SmsController {
                     content = @Content(schema = @Schema(implementation = CommonResponse.class))),
             @ApiResponse(responseCode = "400", description = "이미 가입된 번호 or 형식 오류",
                     content = @Content(schema = @Schema(implementation = CommonResponse.class))),
-            @ApiResponse(responseCode = "429", description = "재요청 제한 (3분 내 중복 요청)",
+            @ApiResponse(responseCode = "429", description = "3분 내 중복 요청 제한",
+                    content = @Content(schema = @Schema(implementation = CommonResponse.class))),
+            @ApiResponse(responseCode = "429", description = "Twilio 자체 전송 제한 (Rate Limit)",
                     content = @Content(schema = @Schema(implementation = CommonResponse.class)))
     })
     @PostMapping("/phone")
@@ -51,11 +53,13 @@ public class SmsController {
      */
     @Operation(summary = "인증번호 확인")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "인증번호 인증 성공",
+            @ApiResponse(responseCode = "200", description = "인증번호 전송 성공",
                     content = @Content(schema = @Schema(implementation = CommonResponse.class))),
-            @ApiResponse(responseCode = "400", description = "잘못된 인증번호 or 형식 오류",
+            @ApiResponse(responseCode = "400", description = "이미 가입된 번호 or 형식 오류",
                     content = @Content(schema = @Schema(implementation = CommonResponse.class))),
-            @ApiResponse(responseCode = "429", description = "재요청 제한 (3분 내 중복 요청)",
+            @ApiResponse(responseCode = "429", description = "3분 내 중복 요청 제한",
+                    content = @Content(schema = @Schema(implementation = CommonResponse.class))),
+            @ApiResponse(responseCode = "429", description = "Twilio 자체 전송 제한 (Rate Limit)",
                     content = @Content(schema = @Schema(implementation = CommonResponse.class)))
     })
     @PostMapping("/verify")
