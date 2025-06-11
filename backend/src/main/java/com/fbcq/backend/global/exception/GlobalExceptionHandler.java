@@ -1,7 +1,8 @@
 package com.fbcq.backend.global.exception;
 
 import com.fbcq.backend.global.dto.response.CommonResponse;
-// import com.fbcq.backend.global.dto.response.ErrorResponse; // ✅ 향후 확장 시 사용
+// import com.fbcq.backend.global.dto.response.ErrorResponse; // ✅ 확장 시 에러 코드 및 URI 포함 구조로 변경 가능
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,19 +16,22 @@ import java.util.List;
 public class GlobalExceptionHandler {
 
     /**
-     * 잘못된 파라미터 등 클라이언트 입력 오류 처리
+     * 잘못된 파라미터 또는 비즈니스 로직 검증 실패에 대한 처리
+     * 예: IllegalArgumentException 등 명시적 예외
      */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<CommonResponse<Void>> handleIllegalArgument(IllegalArgumentException e) {
         return ResponseEntity.badRequest()
                 .body(CommonResponse.fail(e.getMessage()));
 
-        // ✅ 확장 구조 예시
-        // return ResponseEntity.badRequest().body(ErrorResponse.of("INVALID_ARGUMENT", e.getMessage(), request.getRequestURI()));
+        // ✅ 확장 예시
+        // return ResponseEntity.badRequest()
+        //         .body(ErrorResponse.of("INVALID_ARGUMENT", e.getMessage(), request.getRequestURI()));
     }
 
     /**
-     * 예외 누락 대비 시스템 오류 처리
+     * 시스템에서 발생한 예상치 못한 예외 처리
+     * 예: NPE, ClassCastException 등 일반 Exception
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<CommonResponse<Void>> handleSystemError(Exception e) {
@@ -40,7 +44,8 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * javax.validation 기반 유효성 실패 대응
+     * @RequestBody 또는 @ModelAttribute DTO 유효성 검증 실패 처리
+     * (javax.validation 기반 - ex. @Valid DTO)
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<CommonResponse<Object>> handleValidation(MethodArgumentNotValidException e) {
@@ -51,12 +56,29 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest()
                 .body(CommonResponse.fail("유효성 검사 실패", errors));
 
+        // ✅ 확장 예시
         // List<ErrorResponse.FieldError> errorList = ...
-        // return ResponseEntity.badRequest().body(ErrorResponse.of("VALIDATION_ERROR", "유효성 검사 실패", request.getRequestURI(), errorList));
+        // return ResponseEntity.badRequest()
+        //         .body(ErrorResponse.of("VALIDATION_ERROR", "유효성 검사 실패", request.getRequestURI(), errorList));
     }
 
     /**
-     * 커스텀 비즈니스 예외 처리
+     * @RequestParam, @PathVariable 등 메서드 파라미터 유효성 검증 실패 처리
+     * (ex. @Size, @Pattern, @Min 등의 제약 조건 위반)
+     */
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<CommonResponse<List<String>>> handleConstraintViolation(ConstraintViolationException e) {
+        List<String> errors = e.getConstraintViolations().stream()
+                .map(v -> String.format("[%s] %s", v.getPropertyPath(), v.getMessage()))
+                .toList();
+
+        return ResponseEntity.badRequest()
+                .body(CommonResponse.fail("요청 파라미터 유효성 실패", errors));
+    }
+
+    /**
+     * 커스텀 비즈니스 예외 처리 (ex. 도메인 규칙 위반 등)
+     * 예: 인증 실패, 리소스 중복, 권한 없음 등
      */
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<CommonResponse<Void>> handleBusinessException(BusinessException e) {
