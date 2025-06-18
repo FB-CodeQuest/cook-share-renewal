@@ -37,7 +37,8 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/api/users/check-phone"),
                                 new AntPathRequestMatcher("/api/users/signup"),
                                 new AntPathRequestMatcher("/api/sms/phone"),
-                                new AntPathRequestMatcher("/api/sms/verify")
+                                new AntPathRequestMatcher("/api/sms/verify"),
+                                new AntPathRequestMatcher("/api/districts/fill-coordinates")
 
                         ).permitAll()
                         .anyRequest().authenticated()
